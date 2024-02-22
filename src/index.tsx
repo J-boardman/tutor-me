@@ -19,6 +19,7 @@ app.use(html());
 app.use(staticPlugin());
 app.ws("/ws", {
   message(ws, message) {
+    console.log(message)
     let newMessage: Message = {
       id: ws.id,
       // @ts-expect-error
@@ -26,7 +27,7 @@ app.ws("/ws", {
       time: new Date(),
     };
     chat.push(newMessage);
-    const ui = (
+    const UI = ({isAuthor = false} : {isAuthor?: boolean}) => (
       <>
         <Form />
         <div class="container" id="chat_room" hx-swap-oob="beforeend">
@@ -34,8 +35,8 @@ app.ws("/ws", {
         </div>
       </>
     );
-    ws.publish("chat_room", ui);
-    ws.send(ui);
+    ws.publish("chat_room", <UI />);
+    ws.send(<UI isAuthor={true}/>);
   },
   open(ws) {
     console.log(`Connected ${ws.id}`);

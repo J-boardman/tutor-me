@@ -1,5 +1,6 @@
 body {
-  height: 100dvh;
+  max-height: 100svh;
+  height: 100svh;
   width: 100vw;
   display: grid;
   grid-template-columns: 20rem 1fr;
@@ -8,7 +9,7 @@ body {
 aside {
   height: 100%;
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  /* grid-template-rows: min-content 1fr min-content; */
 }
 
 hgroup {
@@ -17,7 +18,7 @@ hgroup {
 
 
 body > div > div {
-  max-height: 100vh;
+  max-height: calc(100svh - 20rem);
   display: grid;
   grid-template-rows: 1fr max-content;
 }
@@ -30,12 +31,11 @@ body > div > div {
   overflow-y: scroll;
   max-height: 100%;
   min-height: 100%;
-  width: 100%;
-  margin: 1rem 0;
+  margin: 0.5rem;
 }
 
 form {
-  padding-right: 0.5rem;
+  padding: 1rem 0.5rem 0 0.5rem;
   padding-top: 1rem;
   background-color: #13171f;
 }
@@ -47,4 +47,12 @@ article {
 article > header {
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        grid-template-rows: max-content 1fr;
+        grid-template-columns: 1fr;
+    }
+
 }

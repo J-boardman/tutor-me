@@ -7,7 +7,11 @@ export default function BaseHTML({ chat }: { chat: Message[] }) {
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no;user-scalable=0;"
+        />
+
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
         <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
         <link
@@ -24,13 +28,12 @@ export default function BaseHTML({ chat }: { chat: Message[] }) {
             <h2>Chat room</h2>
             <h4>Please be polite!</h4>
           </hgroup>
-          <div></div>
-          <form hx-post="/username">
+          {/* <form hx-post="/username">
             <fieldset role="group">
               <input type="text" name="username" placeholder="Set username"/>
               <input type="submit" value="Set" />
             </fieldset>
-          </form>
+          </form> */}
         </aside>
         <div>
           <div hx-ext="ws" ws-connect="/ws">
