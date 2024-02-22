@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1708569505394,
+      "tag": "0000_rich_lorna_dane",
+      "breakpoints": true
+    }
+  ]
+}
