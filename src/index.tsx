@@ -1,21 +1,15 @@
-import { Elysia } from "elysia";
+import { Elysia, t } from "elysia";
 import { staticPlugin } from "@elysiajs/static";
 import { html } from "@elysiajs/html";
-import BaseHTML from "./components/BaseHTML";
-import chatService from "./controllers/chat"
+import chatService from "./controllers/chat";
+import HomePage from "./pages/HomePage";
 
 const app = new Elysia();
 
-export type Message = {
-  id: string;
-  message: string;
-  time: Date;
-};
-
 app.use(html());
 app.use(staticPlugin());
-app.get("/", () => <BaseHTML />);
-app.use(chatService)
+app.get("/", () => <HomePage />);
+app.use(chatService);
 
 app.listen(3000);
 

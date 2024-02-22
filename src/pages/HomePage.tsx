@@ -1,9 +1,14 @@
+import BaseHTML from "../components/BaseHTML";
 import Form from "../components/Form";
 import MessageBox from "../components/Message";
+import { db } from "../db/db";
+import { Message, messages } from "../db/schema";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const messageList: Message[] = await db.select().from(messages).execute()
+
   return (
-    <>
+    <BaseHTML>
       <aside>
         <hgroup>
           <h2>Chat room</h2>
@@ -19,13 +24,13 @@ export default function HomePage() {
       <div>
         <div hx-ext="ws" ws-connect="/ws">
           <div id="chat_room">
-            {chat.map((message) => (
+            {messageList.map((message) => (
               <MessageBox message={message} />
             ))}
           </div>
           <Form />
         </div>
       </div>
-    </>
+    </BaseHTML>
   );
 }
