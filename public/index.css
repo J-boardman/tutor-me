@@ -8,11 +8,13 @@ body {
 
 aside {
   height: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   /* grid-template-rows: min-content 1fr min-content; */
 }
 
-hgroup {
+aside > hgroup {
   padding: 1rem 1rem 0 1rem;
 }
 
@@ -55,4 +57,17 @@ article > header {
         grid-template-columns: 1fr;
     }
 
+    aside form {
+        display: none;
+    }
+
+}
+
+
+.sign-in-page, .sign-up-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 768px;
+    margin: 0 auto;
 }
